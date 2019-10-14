@@ -11,8 +11,10 @@ let milesPerKilometer: number = 0.621;
 
 // Code part 2 here:
 
-
-
+let milesToMars = kilometersToMars * milesPerKilometer;
+let hoursToMars = milesToMars / speedMph;
+let daysToMars = Math.round(100* hoursToMars / 24) / 100; 
 
 // Code the output statement here (use a template literal):
 
+console.log(`It will take the shuttle ${spacecraftName} ${daysToMars} days to reach Mars.`);
