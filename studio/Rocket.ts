@@ -3,16 +3,19 @@ import { Astronaut } from './Astronaut';
 import { Cargo } from './Cargo';
 
 export class Rocket implements Payload {
+    massKg: number;
     name: string;
+    // masses: object[];
     totalCapacityKg: number;
-    cargoItems: Cargo[];
-    astronauts: Astronaut[];
+    cargoItems: Cargo[] = [];
+    astronauts: Astronaut[] = [];
 
-    constructor() {
-        this.name = '',
-        this.totalCapacityKg = 0,
+    constructor(name: string, totalCapacityKg: number) {
+        this.name = name;
+        this.totalCapacityKg = totalCapacityKg;
     }
 
+    // THIS IS WHERE THE PROBLEM IS
     sumMass( items: Payload[] ): number {
         let total: number = 0;
         for (let i = 0; i < items.length; i++) {
@@ -21,7 +24,7 @@ export class Rocket implements Payload {
         return total;
     }
 
-    currentMassKg(): number{
+    currentMassKg(): number {
         return this.sumMass(this.astronauts) + this.sumMass(this.cargoItems);
     }
 
